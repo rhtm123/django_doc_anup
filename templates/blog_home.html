@@ -11,7 +11,12 @@
     <!-- <h2> {{ name }} </h2> -->
     {% for blog in blogs %}
         <div>
-          <a href="/blog/{{ blog.id }}/">  <h2> {{ blog.title }}</h2> </a>
+            <a href="/blog/{{ blog.id }}/">
+                <img width="400px"  src="/media/{{ blog.thumbnail }}">
+            <h2> {{ blog.title }}</h2>
+        
+            </a>
+            <br >
         </div>
 
     {% endfor %}

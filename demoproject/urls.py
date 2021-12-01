@@ -19,6 +19,9 @@ from django.urls import path
 from django.shortcuts import HttpResponse
 from django.urls.conf import include
 
+from django.conf import settings
+from django.conf.urls.static import static
+
 from blog import views
 
 urlpatterns = [
@@ -28,4 +31,4 @@ urlpatterns = [
     path("about/", views.about_view),
     path("demo-html-page/", views.demo_html),
     path("blog/", include("blog.urls")),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
