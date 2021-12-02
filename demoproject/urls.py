@@ -31,4 +31,5 @@ urlpatterns = [
     path("about/", views.about_view),
     path("demo-html-page/", views.demo_html),
     path("blog/", include("blog.urls")),
+    path("account/", include("account.urls")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
