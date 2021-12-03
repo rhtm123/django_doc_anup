@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body style="margin: auto; width:50%;">
+
+    {% if request.user.is_authenticated %}
+
+        <h1>You are already logged. What are your doing here?</h1>
+
+        <h2> <a href="/">Visit Homepage</a> </h2>
+    {% else %}
+
+    {% if is_login %}
+
+    <h1>You are successfully logged. </h1>
+    <h2> <a href="/">Visit Homepage</a> </h2>
+
+    {% else %}
+        <h1>Login</h1>
+        <form method="post">
+            {% csrf_token %}
+            <input name="username" style="padding: 10px; margin: 10px; width: 100%;" type="text" placeholder="your username"> <br>
+            <input name="pass" style="padding: 10px; margin: 10px;width: 100%;" type="password" placeholder="password"> 
+            <input style="padding: 10px; margin: 10px; width: 100%;" type="submit">
+
+        </form>
+
+        <h4>You have not created an account. Click <a href="/account/signup/">Sign up</a></h4>
+    {% endif %}
+
+    {% endif %}
+
+
+    
+
+</body>
+</html>

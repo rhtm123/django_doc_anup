@@ -12,12 +12,19 @@
 
     <h2>You can visit following pages</h2>
 
+    {% if request.user.is_authenticated %}
+        <p>Your username: {{ request.user.username }}
+        <a href="/account/logout/">Click here to logout</a> </p>
+
+    {% else %}
+         <p> <a href="/account/login/">Click here login </a> </p>
+         <p> <a href="/account/signup/">Create your account</a> </p>
+    {% endif %}
+
      <ul>
          <li><a href="/blog/">Read Blogs</a></li>
          <li><a href="/contact/">Contact</a></li>
          <li><a href="/about/">About us</a></li>
-
-
      </ul>
     
 </body>

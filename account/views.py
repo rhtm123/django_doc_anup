@@ -1,9 +1,33 @@
-from django.http.response import HttpResponse
 from django.shortcuts import render, HttpResponse
 
 from django.contrib.auth.models import User
 
+from django.contrib.auth import authenticate, login, logout
+
 # Create your views here.
+
+
+def logout_view(request):
+    logout(request)
+    return HttpResponse("You are successfully logged out")
+
+
+def login_view(request):
+    d = {
+        "is_login": False,
+    }
+    if request.method == "POST":
+        username1 = request.POST["username"]
+        password1 = request.POST["pass"]
+        u = authenticate(username=username1, password=password1)
+        if u:
+            login(request, u)
+            d = {"is_login": True}
+
+            return render(request, "account/login.html", d)
+        else:
+            return HttpResponse("Your credentials are not correct")
+    return render(request, "account/login.html")
 
 
 def signup_view(request):
